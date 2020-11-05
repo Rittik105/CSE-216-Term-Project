@@ -23,10 +23,31 @@
             <a class="nav-link" href="#">Employees</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/managers">Managers</a>
+            <a class="nav-link" href="managers/" disabled = "true">Managers</a>
           </li>
         </ul>
       </div>
     </nav>
+
+    <div>
+      <table width="100%"  border="1">
+        <tr style="background-color:lightgray">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Date of Birth</th>
+        </tr>
+        {% for row in dict %}
+        <tr>
+          <td>{{row.id}}</td>
+          <td>{{row.name }}</td>
+          <td>{{row.mail}}</td>
+          <td>{{row.phone}}</td>
+          <td>{{row.dob}}</td>
+       </tr>
+       {% endfor %}
+      </table>
+    </div>
   </body>
 </html>

@@ -15,7 +15,7 @@ def login(request):
         result = cursor.fetchone()
 
         if result and password == result[0]:
-            return redirect('/home', 'home')
+            return redirect('home/', 'home')
         else:
             return render(request, "admin_login/admin_login.html", context = {'status':'Log in failed'})
 
