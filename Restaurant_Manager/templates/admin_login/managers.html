@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends "home_admin/home_admin.html" %}
+{% extends "admin_login/home_admin.html" %}
 
     {% block title_block %}
     <title>Managers</title>
@@ -24,5 +24,5 @@
        {% endfor %}
       </table>
     </div>
-    <a href="admin_signup/" class="btn btn-primary btn-lg active" role="button" align="left" aria-pressed="true">Add User</a>
+    <a href="/admin/admin_signup" class="btn btn-primary btn-lg active" role="button" align="left" aria-pressed="true">Add User</a>
     {% endblock %}
