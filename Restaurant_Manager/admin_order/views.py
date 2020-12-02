@@ -39,7 +39,7 @@ def place_order(request):
             cursor.execute(sql)
             order_id = cursor.fetchone()[0]
             if order_id is not None:
-                order_id = int(order_id.split(sep="_")[0])
+                order_id = int(order_id.split(sep="_")[1])
             order_id = generate_primary_key(order_id)
             order_id = 'OFF_' + str(order_id)
 

@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', include('admin_login.urls'), name="alogin"),
     path('menu/', include('menu.urls'), name="menu"),
     path('order/', include('admin_order.urls'), name="order"),
+    path('sale/', include('sales.urls'), name="sale"),
 ]
