@@ -8,7 +8,7 @@
 
     {% block body_block %}
       <div class='jumbotron'>
-        <form method="post"> {% csrf_token %}
+        <form  method="post"> {% csrf_token %}
           <table width="100%"  border="1">
             <tr style="background-color:lightgray">
               <th>Food ID</th>
@@ -39,7 +39,7 @@
               <select class="custom-select" id="job_t" name="waiter">
                 <option selected disabled value="">Choose..</option>
                 {% for row in dict2 %}
-                <option value = "{{ row.id }}">{{ row.name }}</option>
+                <option value = "{{ row.name }}">{{ row.name }}</option>
                 {% endfor %}
               </select>
             </div>
