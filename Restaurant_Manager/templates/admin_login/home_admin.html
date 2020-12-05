@@ -16,16 +16,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/menu">Menu</a>
+            <a class="nav-link" href="/menu/">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/order/">Place Order</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Sales</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/employees">Employees</a>
+            <a class="nav-link" href="/admin/employees/">Employees</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/managers">Managers</a>
+            <a class="nav-link" href="/admin/managers/">Managers</a>
           </li>
           <li class="nav-item" align = 'left'>
             <a class="nav-link" href="/admin/logout">Log Out</a>
@@ -34,7 +37,11 @@
       </div>
     </nav>
     {% block body_block %}
-
+      <div class="jumbotron">
+        <h1>Welcome to Restaurant Manager</h1>
+        <h4>You can place orders and see your sales info here</h4>
+        <a href="/order" class="btn btn-primary btn-lg active" role="button" align="left" aria-pressed="true">Place Order</a>
+      </div>
     {% endblock %}
   </body>
 </html>

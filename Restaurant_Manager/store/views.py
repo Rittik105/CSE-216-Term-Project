@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db import connection
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 def store(request):
@@ -25,9 +27,16 @@ def store(request):
 
 
 def cart(request):
+    if request.session.has_key('customer_name'):
+        customer = request.session.get('customer_name')
+        data = json.loads(request.data)
+        product = data['productId']
+        console.log(customer)
     context = {}
     return render(request,'store/cart.html')
 
+def updateItem(request):
+    return JsonResponse('Item was added')
 
 def not_lgin(request):
     return render(request, "store/ntlgin.html")

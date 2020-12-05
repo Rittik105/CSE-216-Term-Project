@@ -20,7 +20,8 @@ urlpatterns = [
     path('', include('customer_login.urls'), name="clogin"),
     path('admin/', include('admin_login.urls'), name="alogin"),
     path('home/', include('home_admin.urls'), name="home"),
-    path('managers/', include('managers.urls'), name="managers"),
 	path('home/', include('customer_login.urls'), name="customers"),
-    path('store/', include('store.urls'), name="store")
+    path('store/', include('store.urls'), name="store"),
+    path('menu/', include('menu.urls'), name="menu"),
+    path('order/', include('admin_order.urls'), name="order"),
 ]

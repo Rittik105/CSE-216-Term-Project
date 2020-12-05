@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'admin_login',
     'home_admin',
     'managers',
-    'customer_login'
+    'customer_login',
+    'store',
+    'menu',
+    'admin_order',
 ]
 
 MIDDLEWARE = [
