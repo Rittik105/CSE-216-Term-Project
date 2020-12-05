@@ -16,6 +16,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin_login',
-    'home_admin',
-    'managers',
-    'customer_login'
+    'customer_login',
+    'store',
+    'menu',
+    'admin_order',
+    'sales',
 ]
 
 MIDDLEWARE = [
@@ -97,6 +100,18 @@ DATABASES = {
     }
 }
 
+#rittik's part
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.oracle',
+#         'NAME': 'RReestaurant',
+#         'USER': 'RN',
+#         'PASSWORD': 'RN',
+#         'HOST': 'localhost',
+#         'PORT': '1521',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -142,5 +157,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    STATIC_DIR,
 ]

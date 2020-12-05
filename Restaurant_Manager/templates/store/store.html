@@ -1,44 +1,16 @@
+<!DOCTYPE html>
+{% extends "customer_login/home_login.html" %}
 {% load static %}
 
-<<!DOCTYPE html>
-<<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
-    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Login-Form-Clean.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
-  </head>
-  <body>
-    <div>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="/home">R-Restaurant</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="nav navbar-nav ml-auto text-uppercase">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/store/">Order Now!</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/home/login">Log out</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/cart/">Cart<i class="fa fa-shopping-cart" style="width: 14px;height: 14px;font-size: 20px;"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    </div>
+  {% block title_block %}
+    <title>Store</title>
+  {% endblock %}
+
+  {% block body_block %}
     <div class="st row">
       {% for row in dict %}
       <div class="col-lg-4">
-			<img class="thumbnail" src="{% static 'assets/img/placeholder.png' %}">
+			<img class="thumbnail" src="{% static row.pic %}">
 			<div class="box-element product">
 				<h6><strong>{{row.name}}</strong></h6>
 				<hr>
@@ -50,5 +22,5 @@
     {% endfor %}
   	</div>
     <script type="text/javascript" src="{%static 'assets/js/cart.js' %}"></script>
-  </body>
-</html>
+
+    {% endblock %}

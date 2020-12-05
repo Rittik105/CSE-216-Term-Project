@@ -6,7 +6,6 @@ from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
 def home(request):
-    context = {}
     return render(request,'customer_login/home.html')
 
 def login(request):
@@ -22,12 +21,13 @@ def login(request):
 
         if result and check_password(password, result[0]):
             request.session['customer_name'] = name
-            return render(request, "customer_login/home_login.html", context = {})
+            return redirect('cus_home')
         else:
             return render(request, "customer_login/login.html", context = {'status':'Log in failed'})
 
 
     return render(request, "customer_login/login.html")
+
 
 def signup(request):
         if request.method == "POST":
@@ -51,6 +51,10 @@ def signup(request):
             sql = "INSERT INTO CUSTOMERS VALUES (%s, %s, %s, %s, %s, %s)"
             cursor.execute(sql, [user_id, name, mail, phone, address, password])
 
-            return render(request, "customer_login/signup.html", context = {'status':'success'})
+            return redirect('login')
 
         return render(request, 'customer_login/signup.html')
+
+
+def not_lgin(request):
+    return render(request, "customer_login/ntlgin.html")
