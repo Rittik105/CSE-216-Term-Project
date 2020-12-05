@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "admin_login/home_admin.html" %}
+
+    {% block title_block %}
+    <title>Sales</title>
+    {% endblock %}
+
+    {% block body_block %}
+    <div class="jumbotron">
+      <div>
+        <table width="100%"  border="1">
+          <tr style="background-color:lightgray">
+            <th>Date and Time</th>
+            <th>Table No</th>
+            <th>Order ID</th>
+            <th>Manager</th>
+            <th>Waiter</th>
+            <th>Total Bill</th>
+          </tr>
+          {% for row in dict %}
+          <tr>
+            <td>{{row.time_stamp}}</td>
+            <td>{{row.table}}</td>
+            <td>{{row.order_id}}</td>
+            <td>{{row.manager}}</td>
+            <td>{{row.waiter}}</td>
+            <td>{{row.total}}</td>
+         </tr>
+         {% endfor %}
+        </table>
+      </div>
+      
+    {% endblock %}

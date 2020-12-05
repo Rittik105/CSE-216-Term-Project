@@ -9,7 +9,7 @@ def store(request):
     if request.session.has_key('customer_name'):
         if request.method == "GET":
             cursor = connection.cursor()
-            sql = "SELECT FOOD_ID,NAME, PRICE FROM FOOD ORDER BY FOOD_ID"
+            sql = "SELECT FOOD_ID,NAME,PRICE,DESCRIPTION,PICTURE FROM FOOD ORDER BY FOOD_ID"
             cursor.execute(sql)
             result = cursor.fetchall()
             connection.close()
@@ -19,7 +19,9 @@ def store(request):
                 id = r[0]
                 name = r[1]
                 price = r[2]
-                row = {'id':id, 'name':name, 'price':price}
+                des = r[3]
+                pic = r[4]
+                row = {'id':id, 'name':name, 'price':price,'des':des,'pic':pic}
                 dict.append(row)
 
             return render(request, 'store/store.html', context = {'dict':dict})
@@ -37,6 +39,3 @@ def cart(request):
 
 def updateItem(request):
     return JsonResponse('Item was added')
-
-def not_lgin(request):
-    return render(request, "store/ntlgin.html")

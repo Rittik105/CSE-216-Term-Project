@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>p1</title>
+    {% block title_block %}
+      <title>Customer Home</title>
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
@@ -26,14 +28,16 @@
                 <ul class="nav navbar-nav ml-auto text-uppercase">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/store/">Order Now!</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/home">Log out</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store">Order Now!</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/home/logout">Log out</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/cart/">Cart<i class="fa fa-shopping-cart" style="width: 14px;height: 14px;font-size: 20px;"></i></a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    {% block body_block %}
     <header class="masthead" style="background: url(&quot;{% static 'assets/img/P1.jpg' %}&quot;);">
         <div class="container">
             <div class="intro-text">
@@ -295,6 +299,7 @@
             </div>
         </div>
     </div>
+    {% endblock %}
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
