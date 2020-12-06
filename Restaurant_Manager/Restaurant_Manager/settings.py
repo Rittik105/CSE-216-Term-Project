@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'menu',
     'admin_order',
     'sales'
+    'customer_login',
+    'store',
+    'menu',
+    'admin_order',
+    'sales',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +92,18 @@ SESSION_COOKIE_AGE = 1209600
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.oracle',
+#         'NAME': 'RReestaurant',
+#         'USER': 'RN',
+#         'PASSWORD': 'RN',
+#         'HOST': 'localhost',
+#         'PORT': '1521',
+#     }
+# }
+
+rittik's part
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',

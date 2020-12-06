@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "customer_login/home_login.html" %}
+{% load static %}
+
+  {% block title_block %}
+    <title>Store</title>
+  {% endblock %}
+
+  {% block body_block %}
+    <div class="st row">
+      {% for row in dict %}
+      <div class="col-lg-4">
+			<img class="thumbnail" src="{% static row.pic %}">
+			<div class="box-element product">
+				<h6><strong>{{row.name}}</strong></h6>
+				<hr>
+				<button data-product={{row.id}} data-action="add"  class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success" href="#">View</a>
+				<h4 style="display: inline-block; float: right"><strong>{{row.price}}</strong></h4>
+			</div>
+		</div>
+    {% endfor %}
+  	</div>
+    <script type="text/javascript" src="{%static 'assets/js/cart.js' %}"></script>
+
+    {% endblock %}
