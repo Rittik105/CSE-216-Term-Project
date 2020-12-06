@@ -42,12 +42,9 @@ INSTALLED_APPS = [
     'admin_login',
     'menu',
     'admin_order',
-    'sales'
+    'sales',
     'customer_login',
     'store',
-    'menu',
-    'admin_order',
-    'sales',
 ]
 
 MIDDLEWARE = [
@@ -103,7 +100,8 @@ SESSION_COOKIE_AGE = 1209600
 #     }
 # }
 
-rittik's part
+
+#rittik's part
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
