@@ -8,10 +8,31 @@
     {% block body_block %}
     <div class="jumbotron">
       <div>
+        <form method="post"> {% csrf_token %}
+          <label for="from_date">From:</label>
+          <input type="date" id="from_date" name="from_date" value="{{ from }}">
+
+          <label for="to_date">To:</label>
+          <input type="date" id="to_date" name="to_date" value="{{ to }}">
+
+          <label for="type">Order type:</label>
+          <select  id="type" name="type">
+            <option selected disabled value="{{ type }}">{{ type }}</option>
+            <option value = "All">All</option>
+            <option value = "Home Delivery Orders">Home Delivery Orders</option>
+            <option value = "Dine-In Orders">Dine-In Orders</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+
+        </form>
+      </div>
+      <br>
+      <div>
         <table width="100%"  border="1">
           <tr style="background-color:lightgray">
             <th>Date and Time</th>
-            <th>Table No</th>
+            <th>Table No or Customer ID</th>
             <th>Order ID</th>
             <th>Manager</th>
             <th>Waiter</th>
@@ -27,7 +48,15 @@
             <td>{{row.total}}</td>
          </tr>
          {% endfor %}
+         <tr>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td>Total Sale</td>
+           <td>{{ total_sale }}</td>
+        </tr>
         </table>
       </div>
-      
+
     {% endblock %}
