@@ -25,4 +25,5 @@ urlpatterns = [
     path('menu/', include('menu.urls'), name="menu"),
     path('order/', include('admin_order.urls'), name="order"),
     path('sale/', include('sales.urls'), name="sale"),
+    path('pending_orders/', include('pending_orders.urls'), name="pending"),
 ]

@@ -37,6 +37,7 @@
             <th>Manager</th>
             <th>Waiter</th>
             <th>Total Bill</th>
+            <th>View Details</th>
           </tr>
           {% for row in dict %}
           <tr>
@@ -46,7 +47,13 @@
             <td>{{row.manager}}</td>
             <td>{{row.waiter}}</td>
             <td>{{row.total}}</td>
-         </tr>
+            <td>
+              <form method="post">{% csrf_token %}
+                <input type="hidden" name="view_order" value="{{ row.order_id }}">
+                <button type="submit" class="btn btn-primary btn-sm">View</button>
+              </form>
+            </td>
+          </tr>
          {% endfor %}
          <tr>
            <td></td>
@@ -59,4 +66,8 @@
         </table>
       </div>
 
+      <style>
+        td { text-align: center }
+        th { text-align: center }
+      </style>
     {% endblock %}

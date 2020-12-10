@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'menu',
     'admin_order',
     'sales',
+    'pending_orders',
     'customer_login',
     'store',
 ]
