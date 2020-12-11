@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'menu',
     'admin_order',
     'sales',
+    'expenses',
     'pending_orders',
     'customer_login',
     'store',
@@ -90,6 +91,18 @@ SESSION_COOKIE_AGE = 1209600
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'RRestaurant',
+        'USER': 'RN',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '1521',
+    }
+}
+
+#rittik's part
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.oracle',
@@ -100,19 +113,6 @@ SESSION_COOKIE_AGE = 1209600
 #         'PORT': '1521',
 #     }
 # }
-
-
-#rittik's part
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'RReestaurant',
-        'USER': 'RN',
-        'PASSWORD': 'RN',
-        'HOST': 'localhost',
-        'PORT': '1521',
-    }
-}
 
 
 # Password validation
@@ -157,6 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]

@@ -22,7 +22,7 @@ def place_order(request):
             dict.append(row)
 
         cursor = connection.cursor()
-        sql = "SELECT NAME FROM EMPLOYEES WHERE JOB_ID = (SELECT JOB_ID FROM JOB_TYPE WHERE JOB_NAME = 'WAITER')"
+        sql = "SELECT NAME FROM EMPLOYEES WHERE JOB_ID = (SELECT JOB_ID FROM JOB_TYPE WHERE UPPER(JOB_NAME) = 'WAITER')"
         cursor.execute(sql)
         result = cursor.fetchall()
         connection.close()
@@ -90,7 +90,6 @@ def confirm_order(request):
             order_data = request.session.get('order_data')
 
             if request.method == "POST":
-                print('sad')
                 for row in ordered_items:
                     item_id = row.get('item_id')
                     order_id = row.get('order_id')

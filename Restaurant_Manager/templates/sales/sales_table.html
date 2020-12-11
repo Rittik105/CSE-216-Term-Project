@@ -17,10 +17,16 @@
 
           <label for="type">Order type:</label>
           <select  id="type" name="type">
-            <option selected disabled value="{{ type }}">{{ type }}</option>
-            <option value = "All">All</option>
-            <option value = "Home Delivery Orders">Home Delivery Orders</option>
-            <option value = "Dine-In Orders">Dine-In Orders</option>
+              <option selected value="{{ type }}">{{ type }}</option>
+            {% if type != "All" %}
+              <option value = "All">All</option>
+            {% endif %}
+            {% if type != "Home Delivery Orders" %}
+              <option value = "Home Delivery Orders">Home Delivery Orders</option>
+            {% endif %}
+            {% if type != "Dine-In Orders" %}
+              <option value = "Dine-In Orders">Dine-In Orders</option>
+            {% endif %}
           </select>
 
           <button type="submit" class="btn btn-primary btn-sm">Filter</button>

@@ -81,7 +81,7 @@ def signup(request):
 
             cursor = connection.cursor()
             sql = "INSERT INTO MANAGER VALUES (%s, %s, %s, %s, %s, %s)"
-            cursor.execute(sql, [user_id, name, mail, phone, password, address])
+            cursor.execute(sql, [user_id, name, mail, password, address, phone])
             connection.close()
 
             return render(request, "admin_login/success.html")

@@ -26,4 +26,5 @@ urlpatterns = [
     path('order/', include('admin_order.urls'), name="order"),
     path('sale/', include('sales.urls'), name="sale"),
     path('pending_orders/', include('pending_orders.urls'), name="pending"),
+    path('expenses/', include('expenses.urls'), name="expenses"),
 ]

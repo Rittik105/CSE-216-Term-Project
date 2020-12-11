@@ -12,7 +12,7 @@ def pending_list(request):
             connection.close()
 
         cursor = connection.cursor()
-        sql = "SELECT ORDER_ID, C.NAME, DELIVARY_ADDRESS, DATE_TIME, TOTAL_BILL FROM ON_ORDER O JOIN CUSTOMERS C ON (O.CUSTOMER_ID = C.CUSTOMER_ID) WHERE O.STATUS = 'PENDING' ORDER BY DATE_TIME"
+        sql = "SELECT ORDER_ID, C.NAME, DELIVARY_ADDRESS, DATE_TIME, TOTAL_BILL FROM ON_ORDER O JOIN CUSTOMERS C ON (O.CUSTOMER_ID = C.CUSTOMER_ID) WHERE LOWER(O.STATUS) = 'pending' ORDER BY DATE_TIME"
         cursor.execute(sql)
         result = cursor.fetchall()
         connection.close()
