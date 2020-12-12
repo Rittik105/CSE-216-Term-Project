@@ -34,12 +34,9 @@ def place_order(request):
 
         if request.method == "POST":
             cursor = connection.cursor()
-            sql = 'SELECT MAX(ORDER_ID) FROM OFF_ORDER'
+            sql = "SELECT OFF_ORDER_ID.NEXTVAL FROM dual"
             cursor.execute(sql)
             order_id = cursor.fetchone()[0]
-            if order_id is not None:
-                order_id = int(order_id.split(sep="_")[1])
-            order_id = generate_primary_key(order_id)
             order_id = 'OFF_' + str(order_id)
 
             sql = "SELECT MAX(FOOD_ID) FROM FOOD"
@@ -101,23 +98,11 @@ def confirm_order(request):
 
                 order_id = order_data.get('order_id')
                 table_no = order_data.get('table_no')
+                man_name = order_data.get('man_name')
+                emp_name = order_data.get('emp_name')
 
                 cursor = connection.cursor()
-                total_bill = cursor.callfunc('TOTAL_BILL', float, [order_id])
-
-                cursor = connection.cursor()
-                sql = "SELECT MANAGER_ID FROM MANAGER WHERE NAME = %s"
-                cursor.execute(sql, [order_data.get('man_name')])
-                man_id = cursor.fetchone()[0]
-
-                cursor = connection.cursor()
-                sql = "SELECT EMPLOYEE_ID FROM EMPLOYEES WHERE NAME = %s"
-                cursor.execute(sql, [order_data.get('emp_name')])
-                emp_id = cursor.fetchone()[0]
-
-                cursor = connection.cursor()
-                sql = "INSERT INTO OFF_ORDER VALUES (%s, %s, %s, SYSDATE, %s, %s)"
-                cursor.execute(sql, [order_id, table_no, total_bill, man_id, emp_id])
+                cursor.callproc('INSERT_OFF_ORDER', [order_id, table_no, man_name, emp_name])
 
                 request.session.pop('order_list')
                 request.session.pop('order_data')

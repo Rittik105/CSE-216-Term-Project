@@ -91,28 +91,28 @@ SESSION_COOKIE_AGE = 1209600
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'RRestaurant',
-        'USER': 'RN',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '1521',
-    }
-}
-
-#rittik's part
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.oracle',
-#         'NAME': 'RReestaurant',
+#         'NAME': 'RRestaurant',
 #         'USER': 'RN',
-#         'PASSWORD': 'RN',
+#         'PASSWORD': 'password',
 #         'HOST': 'localhost',
 #         'PORT': '1521',
 #     }
 # }
+
+#rittik's part
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'RReestaurant',
+        'USER': 'RN',
+        'PASSWORD': 'RN',
+        'HOST': 'localhost',
+        'PORT': '1521',
+    }
+}
 
 
 # Password validation

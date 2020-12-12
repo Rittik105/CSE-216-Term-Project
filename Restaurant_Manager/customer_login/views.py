@@ -52,10 +52,6 @@ def signup(request):
             cursor = connection.cursor()
             sql = "INSERT INTO CUSTOMERS VALUES (%s, %s, %s, %s, %s, %s)"
             cursor.execute(sql, [user_id, name, mail, phone, address, password])
-            cart_id = user_id
-            cursor = connection.cursor()
-            sql = "INSERT INTO CART VALUES (%s, %s)"
-            cursor.execute(sql, [user_id, cart_id])
 
             return redirect('login')
 

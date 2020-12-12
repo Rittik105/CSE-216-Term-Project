@@ -138,9 +138,10 @@ def checkout(request):
     if request.session.has_key('customer_name'):
         name = request.session.get('customer_name')
         id = request.session.get('id')
-        order_id = request.session.get('order_id')
+
         cursor = connection.cursor()
         total_bill = cursor.callfunc('TOTAL_BILL_ONLINE', float, [id])
+
         cursor = connection.cursor()
         sql = "SELECT FOOD_ID FROM CART_ITEMS WHERE CART_ID = %s"
         cursor.execute(sql,[id])
@@ -175,16 +176,13 @@ def checkout(request):
             item_id = generate_primary_key(item_id)
 
             cursor = connection.cursor()
-            sql = 'SELECT MAX(ORDER_ID) FROM ON_ORDER'
+            sql = 'SELECT ON_ORDER_ID.NEXTVAL FROM dual;'
             cursor.execute(sql)
             order_id = cursor.fetchone()[0]
-            if order_id is not None:
-                order_id = int(order_id.split(sep="_")[1])
-            order_id = generate_primary_key(order_id)
             order_id = 'ON_' + str(order_id)
 
             cursor = connection.cursor()
-            sql = "SELECT FOOD_ID,QUANTITY FROM CART_ITEMS WHERE CART_ID = %s"
+            sql = "SELECT FOOD_ID, QUANTITY FROM CART_ITEMS WHERE CART_ID = %s"
             cursor.execute(sql,[id])
             result = cursor.fetchall()
             connection.close()
@@ -200,16 +198,11 @@ def checkout(request):
             address = request.POST.get('address')
 
             cursor = connection.cursor()
-            sql = "INSERT INTO ON_ORDER(CUSTOMER_ID,DELIVARY_ADDRESS,TOTAL_BILL,DATE_TIME,ORDER_ID) VALUES (%s, %s, %s, SYSDATE, %s)"
-            cursor.execute(sql, [id, address, total_bill, order_id])
-            connection.close()
-
-            cursor = connection.cursor()
-            sql = "DELETE FROM CART_ITEMS WHERE CART_ID = %s ;"
-            cursor.execute(sql, [id])
+            cursor.callproc('INSERT_ON_ORDER', [id, address, order_id])
             connection.close()
 
             return redirect('history')
+
         return render(request,'store/checkout.html', context = {'dict':dict,'bill':total_bill})
 
     return redirect('nlview')
